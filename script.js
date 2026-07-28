@@ -3,6 +3,26 @@
    ============================================================ */
 
 /* ============================================================
+   0. THEME TOGGLE — default light, dark on user toggle
+   ============================================================ */
+(function() {
+  const saved = localStorage.getItem('pk-theme');
+if (saved === 'light') {
+  // do nothing, light is already default
+} else {
+  document.body.classList.add('dark');
+}})();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', function() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('pk-theme', isDark ? 'dark' : 'light');
+  });
+});
+
+/* ============================================================
    1. CUSTOM CURSOR
    ============================================================ */
 const cursor = document.getElementById('cursor');
